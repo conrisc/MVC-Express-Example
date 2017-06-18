@@ -1,0 +1,45 @@
+extends layout
+
+block body
+    section.hero.is-primary
+        .hero-head
+            header.nav
+                .container
+                    .nav-left
+                        a.nav-item="MyWebsite"
+                    .nav-right.nav-menu
+                        a.nav-item(href="/")="Home"
+                        a.nav-item.is-active(href="/users")="Users"
+        .hero-body
+            .container
+                table.table
+                    thead
+                        tr
+                            th= "ID"
+                            th= "Firstname"
+                            th= "Lastname"
+                            th= "Age"
+                            th= "Action"
+                    tbody
+                        - var id = 1;
+                        each user in users
+                            tr
+                                th= id++
+                                td= user.firstname
+                                td= user.lastname
+                                td= user.age
+                                td 
+                                    a(href="/users/"+user._id)="Delete"
+        .hero-footer
+            .container(style="padding: 20px;")
+                form(method="post" action="/users")
+                    .field.has-addons
+                        p.control
+                            input.input(name="firstname" type="text" placeholder="Firstname" autofocus)
+                    .field.has-addons
+                        p.control
+                            input.input(name="lastname"  type="text" placeholder="Lastname")
+                    .field.has-addons
+                        p.control
+                            input.input(name="age" type="number" placeholder="Age")
+                    button.button.is-primary.is-inverted="Add user"

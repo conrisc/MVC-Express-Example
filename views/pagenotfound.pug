@@ -1,0 +1,16 @@
+extends layout
+
+block body
+    section.hero.is-primary.is-bold.is-fullheight
+        .hero-head
+            header.nav
+                .container
+                    .nav-left
+                        a.nav-item="MyWebsite"
+                    .nav-right.nav-menu
+                        a.nav-item.is-active(href="/")="Home"
+                        a.nav-item(href="/users")="Users"
+        .hero-body
+            .container.has-text-centered
+                h1.title= title
+                h2.subtitle= subtitle
